@@ -313,7 +313,7 @@ function App(props: any) {
                   <>
                     {query && query.rpcUrl && (
                       <Tooltip title={query.rpcUrl}>
-                        <IconButton >
+                        <IconButton>
                           <NetworkWifi />
                         </IconButton>
                       </Tooltip>
@@ -342,7 +342,7 @@ function App(props: any) {
                 <Tooltip title={t("Expedition Github") as string}>
                   <IconButton
                     onClick={() =>
-                      window.open("https://github.com/xops/expedition")
+                      window.open("https://github.com/multisig-labs/expedition")
                     }
                   >
                     <CodeIcon />
