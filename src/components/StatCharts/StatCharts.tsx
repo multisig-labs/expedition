@@ -31,7 +31,9 @@ const blockMapUncles = (block: any) => {
 const blockMapHashRate = (block: any) => {
   return {
     x: hexToNumber(block.number),
-    y: hashesToGH(new BigNumber(block.difficulty, 16).dividedBy(config.blockTime)),
+    y: hashesToGH(
+      new BigNumber(block.difficulty, 16).dividedBy(config.blockTime)
+    ),
   };
 };
 
@@ -51,31 +53,25 @@ const StatCharts: React.FC<IProps> = ({ blocks, victoryTheme }) => {
   const { t } = useTranslation();
   return (
     <Grid item container>
-      <Grid key="hashChart" item xs={12} md={6} lg={3}>
-        <ChartCard title={t("Hash Rate")}>
-          <VictoryChart height={config.chartHeight} width={config.chartWidth} theme={victoryTheme as any}>
-            <VictoryLine data={blocks.map(blockMapHashRate)} />
-          </VictoryChart>
-        </ChartCard>
-      </Grid>
       <Grid key="txChart" item xs={12} md={6} lg={3}>
         <ChartCard title={t("Transaction count")}>
-          <VictoryChart height={config.chartHeight} width={config.chartWidth} theme={victoryTheme as any}>
+          <VictoryChart
+            height={config.chartHeight}
+            width={config.chartWidth}
+            theme={victoryTheme as any}
+          >
             <VictoryBar data={blocks.map(blockMapTransactionCount)} />
           </VictoryChart>
         </ChartCard>
       </Grid>
       <Grid key="gasUsed" item xs={12} md={6} lg={3}>
         <ChartCard title={t("Gas Used")}>
-          <VictoryChart height={config.chartHeight} width={config.chartWidth} theme={victoryTheme as any}>
+          <VictoryChart
+            height={config.chartHeight}
+            width={config.chartWidth}
+            theme={victoryTheme as any}
+          >
             <VictoryBar data={blocks.map(blockMapGasUsed)} />
-          </VictoryChart>
-        </ChartCard>
-      </Grid>
-      <Grid key="uncles" item xs={12} md={6} lg={3}>
-        <ChartCard title={t("Uncles")}>
-          <VictoryChart height={config.chartHeight} width={config.chartWidth} theme={victoryTheme as any}>
-            <VictoryBar data={blocks.map(blockMapUncles)} />
           </VictoryChart>
         </ChartCard>
       </Grid>
